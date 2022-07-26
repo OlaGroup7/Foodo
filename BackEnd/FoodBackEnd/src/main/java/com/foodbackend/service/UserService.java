@@ -2,8 +2,6 @@ package com.foodbackend.service;
 
 import com.foodbackend.model.SignUpResponse;
 import com.foodbackend.model.User;
-import com.foodbackend.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class UserService {
