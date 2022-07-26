@@ -1,9 +1,6 @@
 package com.foodbackend.service;
 
-import com.foodbackend.model.SignUpResponse;
-import com.foodbackend.model.User;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-
+@Service
 public class UserService {
 
     public SignUpResponse register(User user){
