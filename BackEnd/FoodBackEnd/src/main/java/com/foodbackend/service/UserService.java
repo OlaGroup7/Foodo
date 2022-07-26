@@ -1,5 +1,6 @@
 package com.foodbackend.service;
 
+import com.foodbackend.model.HomePageUserDetails;
 import com.foodbackend.model.SignUpResponse;
 import com.foodbackend.model.User;
 import com.foodbackend.repository.UserRepository;
@@ -12,6 +13,12 @@ public class UserService {
     String pepper = "qwerty1234";
     @Autowired
     UserRepository userRepository;
+
+    public HomePageUserDetails fetchUserHomePageDetails(String userID)
+    {
+        HomePageUserDetails homePageUserDetails = new HomePageUserDetails(); //need to add the jpa methods like findbyID to fetch name and address
+        return homePageUserDetails;
+    }
 
     public SignUpResponse register(User user){
         SignUpResponse signUpResponse = new SignUpResponse();
