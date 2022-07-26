@@ -1,6 +1,8 @@
 package com.foodbackend.service;
 
-import com.foodbackend.model.*;
+import com.foodbackend.model.HomePageUserDetails;
+import com.foodbackend.model.SignUpResponse;
+import com.foodbackend.model.User;
 import com.foodbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -8,17 +10,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    String pepper = "qwerty1234";
+
+    String pepper = "qwerty123";
+
     @Autowired
     UserRepository userRepository;
 
-    public HomePageUserDetails fetchUserHomePageDetails(String _id)
+    public HomePageUserDetails fetchUserHomePageDetails(String userID)
     {
-        HomePageUserDetails homePageUserDetails = new HomePageUserDetails();
-        User user = userRepository.findBy_id(_id);
-        homePageUserDetails.setName(user.getName());
-        homePageUserDetails.setAddress(user.getAddress());
-        //need to add the jpa methods like findbyID to fetch name and address
+        HomePageUserDetails homePageUserDetails = new HomePageUserDetails(); //need to add the jpa methods like findbyID to fetch name and address
         return homePageUserDetails;
     }
 
@@ -35,33 +35,9 @@ public class UserService {
             user.setPassword(hashedPassword);
             user.setSalt(salt);
             userRepository.save(user);
-            User tempuser = userRepository.findByEmail(user.getEmail());
             signUpResponse.setFlag(true);
             signUpResponse.setMsg("Signup Successful!!");
-            signUpResponse.set_id(tempuser.get_id());
             return signUpResponse;
         }
-    }
-
-    public LoginResponse authenticate(LoginRequest loginRequest)
-    {
-        User user = userRepository.findByEmail(loginRequest.getEmail());
-        LoginResponse loginResponse = new LoginResponse();
-        if(user ==  null)
-        {
-            loginResponse.setFlag(false);
-            loginResponse.setMsg("User not found! Invalid Email");
-        }
-        else if(user.getPassword().equals(BCrypt.hashpw(loginRequest.getPassword()+pepper,user.getSalt()))){
-            loginResponse.setFlag(true);
-            loginResponse.setMsg("login successful");
-            loginResponse.setRole(user.getRole());
-            loginResponse.set_id(user.get_id());
-        }
-        else {
-            loginResponse.setFlag(false);
-            loginResponse.setMsg("Invalid Password");
-        }
-        return loginResponse;
     }
 }
