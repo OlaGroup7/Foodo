@@ -3,7 +3,9 @@ package com.foodbackend.service;
 import com.foodbackend.model.HomePageUserDetails;
 import com.foodbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
     @Autowired
     UserRepository userRepository;
