@@ -1,4 +1,4 @@
-package com.foodbackend.Repository;
+package com.foodbackend.repository;
 
 public interface UserRepository {
 }

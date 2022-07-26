@@ -1,4 +1,4 @@
-package com.foodbackend.Controller;
+package com.foodbackend.controller;
 
 public class UserController {
 }
