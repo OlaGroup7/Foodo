@@ -1,8 +1,6 @@
 package com.foodbackend.service;
 
-import com.foodbackend.model.HomePageUserDetails;
-import com.foodbackend.model.SignUpResponse;
-import com.foodbackend.model.User;
+import com.foodbackend.model.*;
 import com.foodbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -37,5 +35,21 @@ public class UserService {
             signUpResponse.setMsg("Signup Successful!!");
             return signUpResponse;
         }
+    }
+
+    public LoginResponse authenticate(LoginRequest loginRequest)
+    {
+        User currentUser =  userRepository.findByEmail(loginRequest.getEmail());
+        LoginResponse loginResponse = new LoginResponse();
+        if(currentUser == null )
+        {
+            loginResponse.setFlag(false);
+            loginResponse.setMsg("User not found, Please Signup ");
+        }
+        else{
+            loginResponse.setFlag(true);
+            loginResponse.setMsg("Login Successfully");
+        }
+        return loginResponse;
     }
 }
