@@ -1,13 +1,11 @@
 package com.foodbackend.controller;
 
-import com.foodbackend.model.HomePageUserDetails;
-import com.foodbackend.model.LoginRequest;
-import com.foodbackend.model.LoginResponse;
-import com.foodbackend.model.SignUpResponse;
-import com.foodbackend.model.User;
+import com.foodbackend.model.*;
 import com.foodbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 public class UserController {
@@ -31,4 +29,17 @@ public class UserController {
         SignUpResponse signUpResponse = userService.register(user);
         return signUpResponse;
     }
+    @PostMapping(value = "/addfood", consumes = "application/json")
+    public FoodResponse signup(@RequestBody Food food){
+        FoodResponse foodResponse=userService.addfood(food);
+        return foodResponse;
+    }
+
+    @PostMapping(value = "/fetchfood", consumes = "application/json")
+    public ArrayList<Food> fetch(@RequestBody Food food){
+        ArrayList<Food> foodlist = new ArrayList<>();
+        foodlist = userService.fetchlist(food);
+        return foodlist;
+    }
+
 }
