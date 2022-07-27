@@ -1,16 +1,21 @@
 package com.foodbackend.service;
 
 import com.foodbackend.model.*;
+import com.foodbackend.repository.FoodRepository;
 import com.foodbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 public class UserService {
     String pepper = "qwerty1234";
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    FoodRepository foodRepository;
 
     public HomePageUserDetails fetchUserHomePageDetails(String _id)
     {
@@ -63,5 +68,18 @@ public class UserService {
             loginResponse.setMsg("Invalid Password");
         }
         return loginResponse;
+    }
+
+    public FoodResponse addfood(Food food){
+        FoodResponse foodResponse = new FoodResponse();
+        foodRepository.save(food);
+        foodResponse.setStatus(true);
+        foodResponse.setMessage("Food Addition successful");
+        return foodResponse;
+    }
+
+    public ArrayList<Food> fetchlist(Food food){
+        ArrayList<Food> foods = foodRepository.findByRestaurantIDAndCuisineType(food.getRestaurantID(),food.getCuisineType());
+        return foods;
     }
 }
