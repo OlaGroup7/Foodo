@@ -31,8 +31,10 @@ public class UserService {
             user.setPassword(hashedPassword);
             user.setSalt(salt);
             userRepository.save(user);
+            User tempuser = userRepository.findByEmail(user.getEmail());
             signUpResponse.setFlag(true);
             signUpResponse.setMsg("Signup Successful!!");
+            signUpResponse.set_id(tempuser.get_id());
             return signUpResponse;
         }
     }
@@ -41,8 +43,6 @@ public class UserService {
     {
         User user = userRepository.findByEmail(loginRequest.getEmail());
         LoginResponse loginResponse = new LoginResponse();
-
-
         if(user ==  null)
         {
             loginResponse.setFlag(false);
@@ -51,8 +51,8 @@ public class UserService {
         else if(user.getPassword().equals(BCrypt.hashpw(loginRequest.getPassword()+pepper,user.getSalt()))){
             loginResponse.setFlag(true);
             loginResponse.setMsg("login successful");
-            loginResponse.setUserID(user.getUserID());
             loginResponse.setRole(user.getRole());
+            loginResponse.set_id(user.get_id());
         }
         else {
             loginResponse.setFlag(false);

@@ -1,22 +1,22 @@
 package com.foodbackend.model;
 
 public class HomePageUserDetails {
-    private String Name;
-    private String Address;
+    private String name;
+    private String address;
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 }
