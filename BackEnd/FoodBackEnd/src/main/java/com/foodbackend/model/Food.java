@@ -10,7 +10,6 @@ import javax.persistence.Id;
 @Document("food")
 public class Food {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long foodID;
     @Column(nullable = false)
     private long restaurantID;
