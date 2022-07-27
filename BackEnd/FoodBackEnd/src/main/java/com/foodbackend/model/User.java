@@ -1,9 +1,11 @@
 package com.foodbackend.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 
-@Entity
-//@Table(name = "user")
+
+@Document("user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
