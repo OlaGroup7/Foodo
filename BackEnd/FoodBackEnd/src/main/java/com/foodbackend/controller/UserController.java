@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     UserService userService;
     @GetMapping(value = "/home-customer/{userID}")
-    public HomePageUserDetails homePageDetails(@PathVariable("userID") String userID)
+    public HomePageUserDetails homePageDetails(@PathVariable("userID") long userID)
     {
         HomePageUserDetails homePageUserDetails = userService.fetchUserHomePageDetails(userID);
         return homePageUserDetails;
