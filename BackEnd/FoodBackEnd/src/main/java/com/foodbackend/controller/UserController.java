@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     UserService userService;
-    @GetMapping(value = "/home-customer/{userID}")
-    public HomePageUserDetails homePageDetails(@PathVariable("userID") long userID)
+    @GetMapping(value = "/home-customer/{_id}")
+    public HomePageUserDetails homePageDetails(@PathVariable String _id)
     {
-        HomePageUserDetails homePageUserDetails = userService.fetchUserHomePageDetails(userID);
+        HomePageUserDetails homePageUserDetails = userService.fetchUserHomePageDetails(_id);
         return homePageUserDetails;
     }
     
