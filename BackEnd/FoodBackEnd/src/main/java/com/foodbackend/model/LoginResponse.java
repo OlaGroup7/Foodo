@@ -3,23 +3,23 @@ package com.foodbackend.model;
 public class LoginResponse {
     private boolean flag;
     private String msg;
-    private long userID;
-    private String Role;
+    private String role;
+    private String _id;
 
-    public long getUserID() {
-        return userID;
+    public String get_id() {
+        return _id;
     }
 
-    public void setUserID(long userID) {
-        this.userID = userID;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
-    public void setRole(String role) {
-        Role = role;
+    public void setRole(String Role) {
+        this.role = Role;
     }
 
     public boolean isFlag() {
