@@ -1,13 +1,14 @@
 package com.foodbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-//@Table(name = "user")
+import javax.persistence.*;
+
+
+@Document("user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userID;
     private String name;
     private String email;

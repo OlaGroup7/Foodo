@@ -39,16 +39,24 @@ public class UserService {
 
     public LoginResponse authenticate(LoginRequest loginRequest)
     {
-        User currentUser =  userRepository.findByEmail(loginRequest.getEmail());
+        User user = userRepository.findByEmail(loginRequest.getEmail());
         LoginResponse loginResponse = new LoginResponse();
-        if(currentUser == null )
+
+
+        if(user ==  null)
         {
             loginResponse.setFlag(false);
-            loginResponse.setMsg("User not found, Please Signup ");
+            loginResponse.setMsg("User not found! Invalid Email");
         }
-        else{
+        else if(user.getPassword().equals(BCrypt.hashpw(loginRequest.getPassword()+pepper,user.getSalt()))){
             loginResponse.setFlag(true);
-            loginResponse.setMsg("Login Successfully");
+            loginResponse.setMsg("login successful");
+            loginResponse.setUserID(user.getUserID());
+            loginResponse.setRole(user.getRole());
+        }
+        else {
+            loginResponse.setFlag(false);
+            loginResponse.setMsg("Invalid Password");
         }
         return loginResponse;
     }
