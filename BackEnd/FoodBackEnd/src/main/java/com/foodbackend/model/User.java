@@ -1,23 +1,36 @@
 package com.foodbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
-
 @Document("user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userID;
     private String name;
     private String email;
     private String password;
-    private long Phone;
-    private String Address;
-    private String Role;
+
+    private long phone;
+
+    private String address;
+
+    private String role;
 
     private String salt;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    private String _id;
+
 
     public String getSalt() {
         return salt;
@@ -60,26 +73,26 @@ public class User {
     }
 
     public long getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(long phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 }

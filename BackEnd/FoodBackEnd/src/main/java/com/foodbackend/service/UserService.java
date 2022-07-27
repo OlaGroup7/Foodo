@@ -12,9 +12,13 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public HomePageUserDetails fetchUserHomePageDetails(long userID)
+    public HomePageUserDetails fetchUserHomePageDetails(String _id)
     {
-        HomePageUserDetails homePageUserDetails = new HomePageUserDetails(); //need to add the jpa methods like findbyID to fetch name and address
+        HomePageUserDetails homePageUserDetails = new HomePageUserDetails();
+        User user = userRepository.findBy_id(_id);
+        homePageUserDetails.setName(user.getName());
+        homePageUserDetails.setAddress(user.getAddress());
+        //need to add the jpa methods like findbyID to fetch name and address
         return homePageUserDetails;
     }
 
@@ -31,8 +35,10 @@ public class UserService {
             user.setPassword(hashedPassword);
             user.setSalt(salt);
             userRepository.save(user);
+            User tempuser = userRepository.findByEmail(user.getEmail());
             signUpResponse.setFlag(true);
             signUpResponse.setMsg("Signup Successful!!");
+            signUpResponse.set_id(tempuser.get_id());
             return signUpResponse;
         }
     }
@@ -41,8 +47,6 @@ public class UserService {
     {
         User user = userRepository.findByEmail(loginRequest.getEmail());
         LoginResponse loginResponse = new LoginResponse();
-
-
         if(user ==  null)
         {
             loginResponse.setFlag(false);
@@ -51,8 +55,8 @@ public class UserService {
         else if(user.getPassword().equals(BCrypt.hashpw(loginRequest.getPassword()+pepper,user.getSalt()))){
             loginResponse.setFlag(true);
             loginResponse.setMsg("login successful");
-            loginResponse.setUserID(user.getUserID());
             loginResponse.setRole(user.getRole());
+            loginResponse.set_id(user.get_id());
         }
         else {
             loginResponse.setFlag(false);
