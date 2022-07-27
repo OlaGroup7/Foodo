@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public HomePageUserDetails fetchUserHomePageDetails(String userID)
+    public HomePageUserDetails fetchUserHomePageDetails(long userID)
     {
         HomePageUserDetails homePageUserDetails = new HomePageUserDetails(); //need to add the jpa methods like findbyID to fetch name and address
         return homePageUserDetails;
