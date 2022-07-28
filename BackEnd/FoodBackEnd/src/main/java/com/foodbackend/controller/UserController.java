@@ -1,11 +1,20 @@
 package com.foodbackend.controller;
 
 import com.foodbackend.model.*;
+
+import com.foodbackend.service.FoodService;
+
 import com.foodbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Set;
+
+import java.util.ArrayList;
+
 
 @RestController
 public class UserController {
@@ -30,7 +39,8 @@ public class UserController {
         return signUpResponse;
     }
     @PostMapping(value = "/addfood", consumes = "application/json")
-    public FoodResponse signup(@RequestBody Food food){
+    public FoodResponse addfood(@RequestBody Food food){
+
         FoodResponse foodResponse=userService.addfood(food);
         return foodResponse;
     }
@@ -40,6 +50,17 @@ public class UserController {
         ArrayList<Food> foodlist = new ArrayList<>();
         foodlist = userService.fetchlist(food);
         return foodlist;
+    }
+
+
+    @Autowired
+    FoodService foodService;
+    @GetMapping(value="/searchResultsbyCuisine/{cuisine}")
+    public ArrayList<Restaurant> searchByCuisine(@PathVariable String cuisine)
+    {
+        //System.out.println(cuisine);
+        ArrayList<Restaurant> restaurants = foodService.searchByCuisine(cuisine);
+        return restaurants;
     }
 
 }
