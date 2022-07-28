@@ -9,4 +9,9 @@ public interface CartRepository extends MongoRepository<Cart, Long> {
     ArrayList<Cart> findByuserID(String userID);
 
     void deleteByuserID(String userID);
+
+    Cart findByuserIDAndFoodName(String userID, String foodName);
+
+
+    void deleteByuserIDAndFoodName(String userID, String foodName);
 }

@@ -34,10 +34,10 @@ public class OrderService {
         long sum = 0;
         order.setUserID(userID);
         for(Cart cart: carts){
-            order.setFoodList(cart.getFoodname());
-            order.setPriceList(cart.getUnitprice());
+            order.setFoodList(cart.getFoodName());
+            order.setPriceList(cart.getUnitPrice());
             order.setQuantityList(cart.getQuantity());
-            sum += cart.getTotalprice();
+            sum += cart.getTotalPrice();
         }
         order.setTotalPrice(sum);
 //
