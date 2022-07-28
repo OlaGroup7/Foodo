@@ -44,11 +44,10 @@ public class UserController {
         FoodResponse foodResponse=userService.addfood(food);
         return foodResponse;
     }
+    @GetMapping(value = "/showRestaurantDetails",produces ="application/json")
+    public ArrayList<Food> fetch(@RequestParam String _id, String cuisine){
 
-    @PostMapping(value = "/fetchfood", consumes = "application/json")
-    public ArrayList<Food> fetch(@RequestBody Food food){
-        ArrayList<Food> foodlist = new ArrayList<>();
-        foodlist = userService.fetchlist(food);
+        ArrayList<Food> foodlist = userService.fetchlist(_id, cuisine);
         return foodlist;
     }
 

@@ -78,8 +78,9 @@ public class UserService {
         return foodResponse;
     }
 
-    public ArrayList<Food> fetchlist(Food food){
-        ArrayList<Food> foods = foodRepository.findByRestaurantIDAndCuisineType(food.getRestaurantID(),food.getCuisineType());
+    public ArrayList<Food> fetchlist(String _id, String cuisine){
+        ArrayList<Food> foods = foodRepository.findByRestaurantIDAndCuisineType(_id,cuisine);
+
         return foods;
     }
 }
