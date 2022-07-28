@@ -30,7 +30,7 @@ public class UserController {
         return signUpResponse;
     }
     @PostMapping(value = "/addfood", consumes = "application/json")
-    public FoodResponse signup(@RequestBody Food food){
+    public FoodResponse addfood(@RequestBody Food food){
         FoodResponse foodResponse=userService.addfood(food);
         return foodResponse;
     }
