@@ -70,12 +70,12 @@ public class UserService {
         return loginResponse;
     }
 
-    public FoodResponse addfood(Food food){
-        FoodResponse foodResponse = new FoodResponse();
+    public FoodAddResponse addfood(Food food){
+        FoodAddResponse foodAddResponse = new FoodAddResponse();
         foodRepository.save(food);
-        foodResponse.setStatus(true);
-        foodResponse.setMessage("Food Addition successful");
-        return foodResponse;
+        foodAddResponse.setStatus(true);
+        foodAddResponse.setMessage("Food Addition successful");
+        return foodAddResponse;
     }
 
     public ArrayList<Food> fetchlist(Food food){

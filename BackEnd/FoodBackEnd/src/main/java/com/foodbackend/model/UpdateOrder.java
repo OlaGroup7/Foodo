@@ -1,6 +1,6 @@
 package com.foodbackend.model;
 
-public class Updateorder {
+public class UpdateOrder {
     private String userID;
     private String foodName;
     private long quantity;

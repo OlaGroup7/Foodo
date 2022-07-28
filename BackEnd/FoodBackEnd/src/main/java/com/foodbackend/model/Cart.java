@@ -15,6 +15,8 @@ public class Cart {
     private long unitPrice;
     private long totalPrice;
 
+    private String _id;
+
     public long getCartId() {
         return cartId;
     }
@@ -79,7 +81,6 @@ public class Cart {
         this._id = _id;
     }
 
-    private String _id;
 
 
 }

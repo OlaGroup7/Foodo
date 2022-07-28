@@ -11,27 +11,27 @@ import java.util.ArrayList;
 public class CartService {
     @Autowired
     CartRepository cartRepository;
-    public CartResponse addCart(Cart cart) {
-        CartResponse cartResponse = new CartResponse();
+    public CartAddResponse addCart(Cart cart) {
+        CartAddResponse cartAddResponse = new CartAddResponse();
         long quantity = cart.getQuantity();
         long price = cart.getUnitPrice();
-        long totalprice = quantity*price;
-        cart.setTotalPrice(totalprice);
+        long totalPrice = quantity * price;
+        cart.setTotalPrice(totalPrice);
         cartRepository.save(cart);
-        cartResponse.setFlag(true);
-        cartResponse.setMsg("Items Added");
-        return cartResponse;
+        cartAddResponse.setStatus(true);
+        cartAddResponse.setMessage("Items Added");
+        return cartAddResponse;
     }
 
 
     public ArrayList<Cart> userCart(String id) {
-        ArrayList<Cart> uc = cartRepository.findByuserID(id);
-        return uc;
+        ArrayList<Cart> cart = cartRepository.findByuserID(id);
+        return cart;
     }
 
-    public OrderResponse updateCart(Updateorder updateorder){
+    public CartUpdateResponse updateCart(UpdateOrder updateorder){
 
-        OrderResponse orderResponse = new OrderResponse();
+        CartUpdateResponse cartUpdateResponse = new CartUpdateResponse();
         if(updateorder.getQuantity() > 0){
             Cart cart = cartRepository.findByuserIDAndFoodName(updateorder.getUserID(), updateorder.getFoodName());
             System.out.println(cart.getFoodName());
@@ -39,13 +39,13 @@ public class CartService {
             cart.setQuantity(updateorder.getQuantity());
             cart.setTotalPrice(updateorder.getQuantity() * cart.getUnitPrice());
             cartRepository.save(cart);
-            orderResponse.setFlag(true);
-            orderResponse.setMsg("Updated Cart");
+            cartUpdateResponse.setStatus(true);
+            cartUpdateResponse.setMessage("Updated Cart");
         }else{
             cartRepository.deleteByuserIDAndFoodName(updateorder.getUserID(),updateorder.getFoodName());
-            orderResponse.setFlag(true);
-            orderResponse.setMsg("Deleted from Cart");
+            cartUpdateResponse.setStatus(true);
+            cartUpdateResponse.setMessage("Deleted from Cart");
         }
-        return orderResponse;
+        return cartUpdateResponse;
     }
 }

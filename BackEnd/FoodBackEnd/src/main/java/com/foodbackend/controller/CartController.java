@@ -13,24 +13,24 @@ public class CartController {
     CartService cartService;
 
     @PostMapping(value = "/addcart", consumes = "application/json", produces = "application/json")
-    public CartResponse addCart(@RequestBody Cart cart){
+    public CartAddResponse addCart(@RequestBody Cart cart){
         System.out.println("Controller");
-        CartResponse cartResponse = cartService.addCart(cart);
-        return cartResponse;
+        CartAddResponse cartAddResponse = cartService.addCart(cart);
+        return cartAddResponse;
     }
 
     @GetMapping(value = "showcart/{id}", produces = "application/json")
     public ArrayList<Cart> userCart(@PathVariable String id){
-        ArrayList<Cart> ac = cartService.userCart(id);
-        return ac;
+        ArrayList<Cart> userCart = cartService.userCart(id);
+        return userCart;
     }
 
 
 //
     @PostMapping(value = "/updatecart", consumes = "application/json", produces = "application/json")
-    public OrderResponse updateCart(@RequestBody Updateorder updateorder){
-        OrderResponse orderResponse = cartService.updateCart(updateorder);
-        return orderResponse;
+    public CartUpdateResponse updateCart(@RequestBody UpdateOrder updateorder){
+        CartUpdateResponse cartUpdateResponse = cartService.updateCart(updateorder);
+        return cartUpdateResponse;
     }
 
 }

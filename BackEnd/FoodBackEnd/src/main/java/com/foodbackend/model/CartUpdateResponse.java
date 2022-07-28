@@ -1,8 +1,11 @@
 package com.foodbackend.model;
 
-public class FoodResponse {
+import java.util.ArrayList;
+
+public class CartUpdateResponse {
     private boolean status;
     private String message;
+
     public boolean isStatus() {
         return status;
     }
@@ -18,4 +21,5 @@ public class FoodResponse {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

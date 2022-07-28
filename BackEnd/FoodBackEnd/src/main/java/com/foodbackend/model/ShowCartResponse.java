@@ -1,9 +1,11 @@
 package com.foodbackend.model;
 
-public class CartResponse {
+import java.util.ArrayList;
 
+public class ShowCartResponse {
     private boolean flag;
     private String msg;
+    private ArrayList<Cart> foodtobuy;
 
     public boolean isFlag() {
         return flag;
@@ -19,5 +21,13 @@ public class CartResponse {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public ArrayList<Cart> getFoodtobuy() {
+        return foodtobuy;
+    }
+
+    public void setFoodtobuy(ArrayList<Cart> foodtobuy) {
+        this.foodtobuy = foodtobuy;
     }
 }
