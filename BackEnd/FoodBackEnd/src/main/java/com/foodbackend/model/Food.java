@@ -12,7 +12,7 @@ public class Food {
     @Id
     private long foodID;
     @Column(nullable = false)
-    private long restaurantID;
+    private String restaurantID;
     @Column(nullable = false,length = 55)
     private String foodName;
     @Column(nullable = false,length = 30)
@@ -27,11 +27,11 @@ public class Food {
         this.foodID = foodID;
     }
 
-    public long getRestaurantID() {
+    public String getRestaurantID() {
         return restaurantID;
     }
 
-    public void setRestaurantID(long restaurantID) {
+    public void setRestaurantID(String restaurantID) {
         this.restaurantID = restaurantID;
     }
 
