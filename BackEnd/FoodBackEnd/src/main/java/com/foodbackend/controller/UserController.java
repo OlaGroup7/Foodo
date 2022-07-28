@@ -1,14 +1,20 @@
 package com.foodbackend.controller;
 
 import com.foodbackend.model.*;
+
 import com.foodbackend.service.FoodService;
+
 import com.foodbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Set;
+
+import java.util.ArrayList;
+
 
 @RestController
 public class UserController {
@@ -34,6 +40,7 @@ public class UserController {
     }
     @PostMapping(value = "/addfood", consumes = "application/json")
     public FoodResponse addfood(@RequestBody Food food){
+
         FoodResponse foodResponse=userService.addfood(food);
         return foodResponse;
     }
@@ -44,6 +51,7 @@ public class UserController {
         foodlist = userService.fetchlist(food);
         return foodlist;
     }
+
 
     @Autowired
     FoodService foodService;
