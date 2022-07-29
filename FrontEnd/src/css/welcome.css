@@ -1,0 +1,33 @@
+.home {
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+  .home .content h1 {
+    font-size: 5.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+  
+  .home .content p {
+    color: var(--grey);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .home .content .home-btn {
+    display: inline-block;
+    color: var(--white);
+    font-weight: 500;
+    border-radius: 0.5rem;
+    background-color: var(--yellow);
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    transition: var(--transition);
+  }
+  
+  .home .content .home-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
+  }
