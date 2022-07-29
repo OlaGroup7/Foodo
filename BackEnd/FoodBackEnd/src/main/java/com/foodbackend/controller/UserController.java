@@ -1,11 +1,20 @@
 package com.foodbackend.controller;
 
 import com.foodbackend.model.*;
+
+import com.foodbackend.service.FoodService;
+
 import com.foodbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Set;
+
+import java.util.ArrayList;
+
 
 @RestController
 public class UserController {
@@ -30,16 +39,27 @@ public class UserController {
         return signUpResponse;
     }
     @PostMapping(value = "/addfood", consumes = "application/json")
-    public FoodAddResponse addfood(@RequestBody Food food){
-        FoodAddResponse foodAddResponse =userService.addfood(food);
-        return foodAddResponse;
+    public FoodResponse addfood(@RequestBody Food food){
+
+        FoodResponse foodResponse=userService.addfood(food);
+        return foodResponse;
+    }
+    @GetMapping(value = "/showRestaurantDetails",produces ="application/json")
+    public ArrayList<Food> fetch(@RequestParam String _id, String cuisine){
+
+        ArrayList<Food> foodlist = userService.fetchlist(_id, cuisine);
+        return foodlist;
     }
 
-    @PostMapping(value = "/fetchfood", consumes = "application/json")
-    public ArrayList<Food> fetch(@RequestBody Food food){
-        ArrayList<Food> foodlist = new ArrayList<>();
-        foodlist = userService.fetchlist(food);
-        return foodlist;
+
+    @Autowired
+    FoodService foodService;
+    @GetMapping(value="/searchResultsbyCuisine/{cuisine}")
+    public ArrayList<Restaurant> searchByCuisine(@PathVariable String cuisine)
+    {
+        //System.out.println(cuisine);
+        ArrayList<Restaurant> restaurants = foodService.searchByCuisine(cuisine);
+        return restaurants;
     }
 
 }
