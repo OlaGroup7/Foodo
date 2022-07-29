@@ -14,7 +14,6 @@ public class CartController {
 
     @PostMapping(value = "/addcart", consumes = "application/json", produces = "application/json")
     public CartAddResponse addCart(@RequestBody Cart cart){
-        System.out.println("Controller");
         CartAddResponse cartAddResponse = cartService.addCart(cart);
         return cartAddResponse;
     }

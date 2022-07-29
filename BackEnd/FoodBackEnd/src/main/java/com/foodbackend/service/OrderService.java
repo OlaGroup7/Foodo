@@ -43,8 +43,8 @@ public class OrderService {
 //
         orderRepository.save(order);
         cartRepository.deleteByuserID(userID);
-        checkOutResponse.setStatus(true);
-        checkOutResponse.setMessage("User Order Placed");
+        checkOutResponse.setFlag(true);
+        checkOutResponse.setMsg("User Order Placed Successfully");
         return checkOutResponse;
 //        }
     }

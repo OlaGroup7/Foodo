@@ -15,10 +15,11 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @GetMapping(value = "/confirmorder/{userId}", produces = "application/json")
+    @GetMapping(value = "/cart/confirmorder/{userId}", produces = "application/json")
     public ResponseEntity<CheckOutResponse> confirmOrder(@PathVariable String userId){
         CheckOutResponse checkOutResponse = orderService.deleteFromCartAndAddToOrder(userId);
         return new ResponseEntity<>(checkOutResponse, HttpStatus.OK);
     }
+
 
 }

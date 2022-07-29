@@ -73,8 +73,8 @@ public class UserService {
     public FoodAddResponse addfood(Food food){
         FoodAddResponse foodAddResponse = new FoodAddResponse();
         foodRepository.save(food);
-        foodAddResponse.setStatus(true);
-        foodAddResponse.setMessage("Food Addition successful");
+        foodAddResponse.setFlag(true);
+        foodAddResponse.setMsg("Food Addition successful");
         return foodAddResponse;
     }
 

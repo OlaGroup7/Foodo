@@ -3,23 +3,23 @@ package com.foodbackend.model;
 import java.util.ArrayList;
 
 public class CartUpdateResponse {
-    private boolean status;
-    private String message;
+    private boolean flag;
+    private String msg;
 
-    public boolean isStatus() {
-        return status;
+    public boolean isFlag() {
+        return flag;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
 }

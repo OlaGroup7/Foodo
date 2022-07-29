@@ -18,8 +18,8 @@ public class CartService {
         long totalPrice = quantity * price;
         cart.setTotalPrice(totalPrice);
         cartRepository.save(cart);
-        cartAddResponse.setStatus(true);
-        cartAddResponse.setMessage("Items Added");
+        cartAddResponse.setFlag(true);
+        cartAddResponse.setMsg("Items Added");
         return cartAddResponse;
     }
 
@@ -39,12 +39,12 @@ public class CartService {
             cart.setQuantity(updateorder.getQuantity());
             cart.setTotalPrice(updateorder.getQuantity() * cart.getUnitPrice());
             cartRepository.save(cart);
-            cartUpdateResponse.setStatus(true);
-            cartUpdateResponse.setMessage("Updated Cart");
+            cartUpdateResponse.setFlag(true);
+            cartUpdateResponse.setMsg("Food Detail Updated in Cart");
         }else{
             cartRepository.deleteByuserIDAndFoodName(updateorder.getUserID(),updateorder.getFoodName());
-            cartUpdateResponse.setStatus(true);
-            cartUpdateResponse.setMessage("Deleted from Cart");
+            cartUpdateResponse.setFlag(true);
+            cartUpdateResponse.setMsg("Food Item Deleted from Cart");
         }
         return cartUpdateResponse;
     }

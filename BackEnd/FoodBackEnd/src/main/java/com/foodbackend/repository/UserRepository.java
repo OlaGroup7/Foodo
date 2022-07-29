@@ -12,7 +12,6 @@ public interface UserRepository extends MongoRepository<User,Long> {
     User findByuserID(long userID);
 
 
-    User findByuserID(long userID);
 
 
 

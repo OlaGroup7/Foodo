@@ -14,8 +14,8 @@ public class RestaurantService {
     public RestaurantAddResponse addrestaurant(Restaurant restaurant) {
         RestaurantAddResponse restaurantAddResponse = new RestaurantAddResponse();
         restaurantRepository.save(restaurant);
-        restaurantAddResponse.setStatus(true);
-        restaurantAddResponse.setMessage("Added new Restaurant");
+        restaurantAddResponse.setFlag(true);
+        restaurantAddResponse.setMsg("Added new Restaurant");
         return restaurantAddResponse;
     }
 }

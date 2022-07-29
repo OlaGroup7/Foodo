@@ -1,21 +1,22 @@
 package com.foodbackend.model;
 
 public class FoodAddResponse {
-    private boolean status;
-    private String message;
-    public boolean isStatus() {
-        return status;
+    private boolean flag;
+    private String msg;
+
+    public boolean isFlag() {
+        return flag;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }
