@@ -5,6 +5,13 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.ArrayList;
 
-public interface CartRepository extends MongoRepository<Cart,Long> {
+public interface CartRepository extends MongoRepository<Cart, Long> {
     ArrayList<Cart> findByuserID(String userID);
+
+    void deleteByuserID(String userID);
+
+    Cart findByuserIDAndFoodName(String userID, String foodName);
+
+
+    void deleteByuserIDAndFoodName(String userID, String foodName);
 }

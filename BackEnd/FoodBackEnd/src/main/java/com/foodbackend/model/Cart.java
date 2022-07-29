@@ -10,10 +10,11 @@ public class Cart {
     private long cartId;
     private String userID;
     private  String restaurantID;
-    private String foodname;
+    private String foodName;
     private long quantity;
-    private long unitprice;
-    private long totalprice;
+    private long unitPrice;
+    private long totalPrice;
+
     private String _id;
 
     public long getCartId() {
@@ -40,12 +41,12 @@ public class Cart {
         this.restaurantID = restaurantID;
     }
 
-    public String getFoodname() {
-        return foodname;
+    public String getFoodName() {
+        return foodName;
     }
 
-    public void setFoodname(String foodname) {
-        this.foodname = foodname;
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
     }
 
     public long getQuantity() {
@@ -56,20 +57,20 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public long getUnitprice() {
-        return unitprice;
+    public long getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUnitprice(long unitprice) {
-        this.unitprice = unitprice;
+    public void setUnitPrice(long unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    public long getTotalprice() {
-        return totalprice;
+    public long getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalprice(long totalprice) {
-        this.totalprice = totalprice;
+    public void setTotalPrice(long totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public String get_id() {
@@ -79,4 +80,7 @@ public class Cart {
     public void set_id(String _id) {
         this._id = _id;
     }
+
+
+
 }

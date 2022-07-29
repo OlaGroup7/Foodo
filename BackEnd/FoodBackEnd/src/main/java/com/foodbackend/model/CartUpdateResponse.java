@@ -1,7 +1,8 @@
 package com.foodbackend.model;
 
-public class CartResponse {
+import java.util.ArrayList;
 
+public class CartUpdateResponse {
     private boolean flag;
     private String msg;
 
@@ -20,4 +21,5 @@ public class CartResponse {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
 }

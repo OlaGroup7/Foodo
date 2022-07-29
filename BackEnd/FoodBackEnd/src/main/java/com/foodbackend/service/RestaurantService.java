@@ -1,7 +1,7 @@
 package com.foodbackend.service;
 
 import com.foodbackend.model.Restaurant;
-import com.foodbackend.model.RestaurantResponse;
+import com.foodbackend.model.RestaurantAddResponse;
 import com.foodbackend.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,11 +11,11 @@ public class RestaurantService {
 
     @Autowired
     RestaurantRepository restaurantRepository;
-    public RestaurantResponse addrestaurant(Restaurant restaurant) {
-        RestaurantResponse restaurantResponse = new RestaurantResponse();
+    public RestaurantAddResponse addrestaurant(Restaurant restaurant) {
+        RestaurantAddResponse restaurantAddResponse = new RestaurantAddResponse();
         restaurantRepository.save(restaurant);
-        restaurantResponse.setFlag(true);
-        restaurantResponse.setMsg("Added new Restaurant");
-        return restaurantResponse;
+        restaurantAddResponse.setFlag(true);
+        restaurantAddResponse.setMsg("Added new Restaurant");
+        return restaurantAddResponse;
     }
 }

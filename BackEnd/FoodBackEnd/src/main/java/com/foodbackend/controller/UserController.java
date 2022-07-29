@@ -39,14 +39,14 @@ public class UserController {
         return signUpResponse;
     }
     @PostMapping(value = "/addfood", consumes = "application/json")
-    public FoodResponse addfood(@RequestBody Food food){
+    public FoodAddResponse addfood(@RequestBody Food food){
 
-        FoodResponse foodResponse=userService.addfood(food);
-        return foodResponse;
+        FoodAddResponse foodAddResponse=userService.addfood(food);
+        return foodAddResponse;
     }
     @GetMapping(value = "/showRestaurantDetails",produces ="application/json")
-    public ArrayList<Food> fetch(@RequestParam String _id, String cuisine){
-
+    public ArrayList<Food> fetch(@RequestParam("_id") String _id, String cuisine){
+        System.out.println(_id);
         ArrayList<Food> foodlist = userService.fetchlist(_id, cuisine);
         return foodlist;
     }
