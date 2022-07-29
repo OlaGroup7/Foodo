@@ -1,0 +1,13 @@
+body {
+    background-image: url("../images/resback.jpg");
+}
+  
+.tag {
+    text-align: center;
+}
+  
+.slick-slide img {
+    margin: auto;
+    width: 30%;
+    height: 50%;
+}

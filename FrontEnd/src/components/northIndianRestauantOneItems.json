@@ -1,0 +1,31 @@
+[
+    {
+    "r_id" : 120,
+    "r_name" : "Paneer Tikka",
+    "r_status" : 2,
+    "r_description": "The most delicious Paneer you ever had",
+    "image_url" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Dominos_pizza_logo.svg/512px-Dominos_pizza_logo.svg.png?20111115123340"
+},
+{
+    "r_id" : 230,
+    "r_name" : "Butter Chicken",
+    "r_status" : 1,
+    "r_description": "The most delicious Butter Chicken you ever had",
+    "image_url" : "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg"
+},
+{
+    "r_id" : 350,
+    "r_name" : "Malai Kofta",
+    "r_status" : 1,
+    "r_description": "The most delicious Butter Chicken you ever had",
+    "image_url" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Dominos_pizza_logo.svg/512px-Dominos_pizza_logo.svg.png?20111115123340"
+},
+{
+    "r_id" : 260,
+    "r_name" : "Garlic Naan",
+    "r_status" : 2,
+    "r_description": "The most delicious Naan you ever had",
+    "image_url" : "https://img.youtube.com/vi/1weigfQ-R9Q/0.jpg"
+}
+
+]
