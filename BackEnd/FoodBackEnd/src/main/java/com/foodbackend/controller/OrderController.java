@@ -9,16 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@Controller
+@RestController
 public class OrderController {
 
     @Autowired
     OrderService orderService;
 
     @GetMapping(value = "/cart/confirmorder/{userId}", produces = "application/json")
-    public ResponseEntity<CheckOutResponse> confirmOrder(@PathVariable String userId){
+    public CheckOutResponse confirmOrder(@PathVariable String userId){
         CheckOutResponse checkOutResponse = orderService.deleteFromCartAndAddToOrder(userId);
-        return new ResponseEntity<>(checkOutResponse, HttpStatus.OK);
+        return checkOutResponse;
     }
 
 
