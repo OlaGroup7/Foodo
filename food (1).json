@@ -1,0 +1,269 @@
+[{
+    "task":"login",
+    "url":"/login",
+    "url-type":"POST",
+    "data":{
+        "email":{
+            "type":"String",
+            "required":true
+
+        },
+        "password":{
+            "type":"String",
+            "required":true,
+            "min":8,
+            "max":16
+        }
+    },
+    "response":[
+        {
+          "status": "success",
+          "response": {
+            "http-status": 200,
+            "response-data": {
+              "flag":{
+                "type":"boolean"
+              },
+              "msg":{
+                "type":"String"
+                }
+            }
+          } 
+        },
+        {
+            "status": "failure",
+            "response":{
+                "http-status":200,
+                "response-data":{
+                    "flag":{
+                        "type":"boolean"
+                    },
+                "msg":{
+                    "type":"String"
+                }
+                }
+            }
+        }
+      ]
+},
+{
+    "task":"signup",
+    "url":"/signup",
+    "url-type":"POST",
+    "data":{
+        "userID":{
+            "type":"Long",
+            "required":true,
+            "unique":true
+        },
+        "name":{
+            "type":"String",
+            "required":true
+        },
+        "email":{
+            "type":"String",
+            "required":true
+        },
+        "password":{
+            "type":"String",
+            "required":true,
+            "min":8,
+            "max":16
+        },
+        "Phone":{
+            "type":"Long",
+            "required":true,
+            "req-length":10
+        },
+        "Address":{
+            "type":"String",
+            "required":true,
+            "max":255
+        },
+        "Role":{
+            "type":"String",
+            "required":true
+        }
+    },
+    "response":[
+        {
+          "status": "success",
+          "response": {
+            "http-status": 200,
+            "response-data": {
+              "flag":{
+                "type":"boolean"
+              },
+              "msg":{
+                "type":"String"
+                },
+                "userID":{
+                    "type":"Long"
+                },
+                "Role":{
+                    "type":"String"
+                }
+            }
+          } 
+        },
+        {
+            "status": "failure",
+            "response":{
+                "http-status":200,
+                "response-data":{
+                    "flag":{
+                        "type":"boolean"
+                    },
+                "msg":{
+                    "type":"String"
+                },
+                "userID":{
+                    "type":"Long"
+                }
+                }
+            }
+        }
+      ]
+},
+{
+    "task":"home-customer",
+    "url":"/home-customer?{userID}",
+    "url-type":"GET",
+    "data":{
+        "userID":{
+            "type":"Long"
+        }
+    },
+    "response":{
+        "Name":{
+            "type":"String"
+        },
+        "Address":{
+            "type":"String"
+        }
+
+    }
+},
+{
+    "task":"searchResultsbyCuisine",
+    "url":"/searchResultsbyCuisine?{cuisine}",
+    "url-type":"GET",
+    "data":{
+        "Cuisine":{
+            "type":"String"
+        }
+    },
+    "response":{
+        "restaurantNames":{
+            "type": "List of String"
+        }
+    }
+},
+{
+    "task":"showRestaurantDetails",
+    "url":"/showRestaurantDetails?{restaurantName},{cuisine}",
+    "url-type":"GET",
+    "data":{
+        "restaurantName":{
+            "type": "String"
+        },
+        "Cuisine":{
+            "type":"String"
+        }
+    },
+    "response":{
+        "menu":{
+            "type": "List of String"
+        },
+        "hotelDetails":{
+            "Name":{
+                "type":"String"
+            },
+            "Address":{
+                "type":"String"
+            }
+        }
+    }
+},
+{
+    "task":"addToCart",
+    "url":"/showRestaurantDetails?{restaurantName},{cuisine}/addToCart",
+    "url-type":"POST",
+    "data":{
+        "userID":{
+            "type":"Long"
+        },
+        "restaurantName":{
+            "type":"String"
+        },
+        "foodName":{
+            "type":"String"
+        },
+        "quantity":{
+            "type":"int"        
+        },
+        "price":{
+            "type":"int"
+        }
+    }
+},
+{
+    "task":"cart",
+    "url":"/cart?{userID}",
+    "url-type":"GET",
+    "data":{
+        "userID":{
+            "type":"String"
+        }
+    },
+    "response":{
+        "foodNames":{
+            "type":"String"
+        },
+        "restaurantName":{
+            "type":"String"
+        },
+        "quantity":{
+            "type":"int"
+        },
+        "price":{
+            "type":"int"
+        }
+    }
+},
+{
+    "task":"updatesInCart",
+    "url":"/cart/updateQuantity",
+    "url-type":"PUT",
+    "data":{
+        "userID":{
+            "type":"Long"
+        },
+        "foodName":{
+            "type":"String"
+        },
+        "quantity":{
+            "type":"int" 
+        }
+        
+    }
+
+
+},
+{
+    "task":"confirmOrder",
+    "url":"/cart/confirmOrder",
+    "url-type":"GET",
+    "data":{
+        "userID":{
+            "type":"String"
+        }
+    },
+    "response":{
+        "status":{
+            "type":"boolean"
+        }
+    }
+}
+
+]
