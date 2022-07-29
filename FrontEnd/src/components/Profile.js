@@ -19,10 +19,7 @@ function KitchenSinkExample() {
         <ListGroup.Item>{usera}@gmail.com</ListGroup.Item>
         <ListGroup.Item>9867556431</ListGroup.Item>
       </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Your Orders</Card.Link>
-        <Card.Link href="#">Foodo Pay</Card.Link>
-      </Card.Body>
+      
     </Card>
     </>
   );
